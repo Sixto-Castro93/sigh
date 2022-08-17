@@ -14,6 +14,7 @@ public final class FunCallNode extends ExpressionNode
         super(span);
         this.function = Util.cast(function, ExpressionNode.class);
         this.arguments = Util.cast(arguments, List.class);
+
     }
 
     @Override public String contents ()

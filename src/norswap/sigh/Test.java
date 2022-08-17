@@ -14,10 +14,9 @@ import java.nio.file.Paths;
 
 import static norswap.utils.Util.cast;
 
-public final class Test
-{
-    public static void main (String[] args) {
-//         String file = "fizzbuzz.si";
+public final class Test {
+    public static void main(String[] args) {
+        // String file = "fizzbuzz.si";
         String file = "kitchensink.si";
         String path = Paths.get("examples/", file).toAbsolutePath().toString();
         String src = IO.slurp(path);
@@ -37,12 +36,12 @@ public final class Test
         reactor.run();
 
         if (!reactor.errors().isEmpty()) {
-            System.out.println(reactor.reportErrors(it ->
-                it.toString() + " (" + ((SighNode) it).span.startString(lineMap) + ")"));
+            System.out.println(
+                    reactor.reportErrors(it -> it.toString() + " (" + ((SighNode) it).span.startString(lineMap) + ")"));
 
             // Alternatively, print the whole tree:
             // System.out.println(
-            //     AttributeTreeFormatter.formatWalkFields(tree, reactor, SighNode.class));
+            // AttributeTreeFormatter.formatWalkFields(tree, reactor, SighNode.class));
             return;
         }
 

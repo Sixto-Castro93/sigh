@@ -70,7 +70,7 @@ public class Scope
     // ---------------------------------------------------------------------------------------------
 
     @Override public String toString() {
-        return "Scope " + declarations.toString();
+        return "Scope " + declarations;
     }
 
     // ---------------------------------------------------------------------------------------------

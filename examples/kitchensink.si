@@ -1,65 +1,140 @@
-// This file showcases every single syntactic feature in the language.
+print("\\CLASS CREATION\\")
+pub class Cat{
+    var name: String
+    var color: String
+    var num_children: Int
 
-fun array_add (a: Int[]): Int
-{
-    fun add (a: Int, b: Int): Int {
-        return add2(a, b) // works!
-
-        fun add2 (a: Int, b: Int): Int {
-            return a + b
-        }
+    fun get_name(): String{
+        return "Mili";
     }
 
-    if (a.length == 0)
-        return 0
+}
+var chat: Cat = create Cat()
+var name: String = chat$get_name()
+chat$color="yellow"
+chat$num_children=5
+print("name: "+name)
+print("color: "+chat$color)
+print("num_children: "+chat$num_children)
 
-    var i: Int = 1
-    var result: Int = a[0]
 
-    while i < a.length {
-        result = add(result, a[i])
-        i = i + 1
+
+print("\\INHERITANCE\\")
+pub class Vehicule{
+    var brand: String
+    fun get_brand(): String {
+        return "Chevrolet";
+    }
+}
+
+pub class Car from Vehicule{
+    var modelName: String
+    var year: Int
+    var owner: String
+
+    fun get_owner(): String{
+        return "Nick"
+    }
+}
+
+var veh: Vehicule = create Vehicule()
+var auto: Car = create Car()
+
+var marca: String = veh$get_brand()
+print("veh$brand: "+marca)
+auto$modelName = "Grand Vitara"
+auto$year = 2022
+var propietario: String = auto$get_owner()
+print("auto$brand: "+marca)
+print("modelName: "+auto$modelName)
+print("propietario: "+propietario)
+
+
+
+print("\n Double Inheritance \n")
+pub class Person{
+    var name: String
+    var age: Int
+
+    fun get_age(): Int {
+        return 55
+    }
+}
+
+pub class Professor{
+    var course: String
+}
+
+pub class FrenchTeacher from Professor,Person{
+    var num_years: Int
+}
+
+var p: Person = create Person()
+var teacher: Professor = create Professor()
+var proFR: FrenchTeacher = create FrenchTeacher()
+
+proFR$name="Nick"
+proFR$age=39
+proFR$course="Francais"
+print("proFR$name: "+proFR$name)
+print("proFR$age: "+proFR$age)
+print("proFR$course: "+proFR$course)
+
+
+print("\\POLYMORPHISM\\")
+pub class Addition{
+    fun add(a: Int, b: Int): Int {
+        var suma: Int = a+b
+        return suma
+    }
+    fun add(a: Int, b: Int, c: Int): Int {
+            var suma: Int = a+b+c
+            return suma
     }
 
-    return result
+    fun add(a: Int, b: Int, c: Int, d:Int): Int {
+        var suma: Int = a+b+c+d
+        return suma
+    }
+
 }
 
-var total: Int = array_add([1, 2, 3])
-var float_total: Float = total + 0.0
+var operation: Addition =  create Addition()
+var totalParams2: Int=operation$add(1,6)
+var totalParams3: Int=operation$add(1,6,5)
+var totalParams4: Int=operation$add(1,6,5,2)
+print("totalParams2: "+totalParams2)
+print("totalParams3: "+totalParams3)
+print("totalParams4: "+totalParams4)
 
-var math: Int = 1 + 3 * 4 * (1 + 3) / 12
-validate5(math)
-validate5(6) // some men just want to watch the world burn
 
-fun validate5 (value: Int)
-{
-    if (value!= 5)
-        print("We wanted 5 but got: " + value)
 
-    if (value > 5)
-        print("It was too big.")
-    else if (value < 5)
-        print("It was too small.")
-    else
-        print("It's just right.")
+
+print("\\POLYMORPHISM2\\")
+pub class Addition2{
+
+    fun add(a: Int, b: Int, c: Int): Int {
+        var sumaInt: Int = a+b+c
+        return sumaInt
+    }
+
+    fun add(a: Float, b: Float, c: Float): Float {
+        var sumaFl: Float = a+b+c
+        return sumaFl
+    }
+
+    fun add(a: String, b: String, c: String): String {
+        var sumaStr: String = a+" "+b+" "+c
+        return sumaStr
+    }
+
+
 }
 
-struct Pair {
-    var a: Int
-    var b: Int
-}
-
-var type: Type = Pair
-print("" + type)
-
-fun sum_pair (pair: Pair): Int {
-    return pair.a + pair.b
-}
-
-validate5(sum_pair($Pair(2, 3)))
-
-fun use_array (array: Int[]) {}
-
-var intArray: Int[] = []
-var stringArray: String[] = []
-use_array([])
+var operation: Addition2 =  create Addition2()
+var sumStr: String = operation$add("je","parle","francais")
+var sum2: Int = operation$add(1,2,4)
+var sum3: Float = operation$add(5.5,10.2,3.3)
+print("sumStr: "+sumStr)
+print("sum2: "+sum2)
+print("sum3: "+sum3)

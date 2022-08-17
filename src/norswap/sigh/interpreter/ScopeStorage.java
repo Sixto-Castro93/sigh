@@ -77,7 +77,7 @@ public final class ScopeStorage
     // ---------------------------------------------------------------------------------------------
 
     @Override public String toString() {
-        return "ScopeStorage " + values.toString();
+        return "ScopeStorage " + values;
     }
 
     // ---------------------------------------------------------------------------------------------
